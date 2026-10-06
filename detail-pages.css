@@ -53,6 +53,37 @@
 .family-table .family-names {color:var(--navy);font-size:16px}
 .family-table .family-names small {display:block;color:var(--muted);font-size:12px;margin-top:8px}
 .family-table dd p+p {margin-top:12px}
+.roller-family-section .detail-heading {display:block;max-width:780px;margin-bottom:40px}
+.roller-family-section .detail-heading .eyebrow {padding:0;margin-bottom:20px;color:var(--navy)}
+.roller-family-section .detail-heading h2 {font-size:clamp(32px,3.8vw,52px);line-height:1.12}
+.roller-family-section .detail-heading p:not(.eyebrow) {max-width:650px;margin-top:18px}
+.family-catalogue {width:100%;table-layout:fixed;border-collapse:collapse;border-bottom:1px solid var(--line);text-align:left}
+.family-catalogue .sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.family-catalogue col:nth-child(1) {width:30%}
+.family-catalogue col:nth-child(2) {width:27%}
+.family-catalogue col:nth-child(3) {width:43%}
+.family-catalogue thead th {padding:16px 22px;background:var(--navy);color:white;font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase}
+.family-catalogue tbody th,.family-catalogue td {vertical-align:top;padding:26px 22px;border-bottom:1px solid var(--line);overflow-wrap:break-word}
+.family-catalogue tbody th {font-size:19px;font-weight:500;letter-spacing:-.025em;line-height:1.4}
+.family-catalogue tbody th>span:last-child {display:block}
+.family-index {display:block;font-size:10px;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-weight:400}
+.family-catalogue td {font-size:14px;line-height:1.75;color:var(--muted);border-left:1px solid var(--line)}
+.family-catalogue .family-application {color:var(--navy);font-size:15px}
+.family-catalogue tbody tr:nth-child(even) {background:var(--paper)}
+.family-cell-label {display:none}
+@media(max-width:760px){
+ .roller-family-section .detail-heading {margin-bottom:28px}
+ .family-catalogue,.family-catalogue tbody {display:block}
+ .family-catalogue colgroup,.family-catalogue thead {display:none}
+ .family-catalogue tbody tr {display:block;padding:26px 0;border-top:1px solid var(--line)}
+ .family-catalogue tbody tr:first-child {border-top:2px solid var(--navy)}
+ .family-catalogue tbody tr:nth-child(even) {background:transparent}
+ .family-catalogue tbody th,.family-catalogue td {display:block;width:auto;padding:0;border:0}
+ .family-catalogue tbody th {display:flex;gap:16px;align-items:baseline;font-size:22px;margin-bottom:22px}
+ .family-index {margin:0;flex-shrink:0}
+ .family-catalogue td+td {margin-top:18px}
+ .family-cell-label {display:block;margin-bottom:6px;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+}
 .feature-copy>p {margin-top:20px}
 .feature-copy .eyebrow {margin:0 0 20px;color:var(--navy)}
 .industry-list {margin:28px 0 0}
