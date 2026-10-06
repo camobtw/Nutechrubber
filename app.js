@@ -182,3 +182,83 @@ function restoreIncomingSection() {
 }
 if (document.readyState === 'complete') restoreIncomingSection();
 else window.addEventListener('load', restoreIncomingSection, { once: true });
+
+// A quiet six-second campaign carousel. Focus, hover, hidden tabs and an
+// off-screen hero suspend rotation; reduced motion starts in manual mode.
+(() => {
+  const carousel = $('.hero-carousel');
+  if (!carousel) return;
+  const slides = $$('.hero-slide', carousel);
+  const selectors = $$('[data-hero-slide]', carousel);
+  const pauseButton = $('[data-hero-pause]', carousel);
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let active = 0;
+  let timer;
+  let userPaused = reducedMotion.matches;
+  let hovered = false;
+  let focused = false;
+  let visible = true;
+  let pageActive = true;
+  const interval = 6000;
+
+  function schedule() {
+    clearTimeout(timer);
+    if (!userPaused && !hovered && !focused && visible && pageActive && !document.hidden) {
+      timer = setTimeout(() => show(active + 1), interval);
+    }
+  }
+  function updatePlayback() {
+    pauseButton.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+    pauseButton.firstElementChild.textContent = userPaused ? '▷' : 'Ⅱ';
+    schedule();
+  }
+  function show(index, manual = false) {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, number) => {
+      const selected = number === active;
+      slide.classList.toggle('is-active', selected);
+      slide.setAttribute('aria-hidden', String(!selected));
+      selectors[number].setAttribute('aria-pressed', String(selected));
+    });
+    const slide = slides[active];
+    $('.hero-frame-number', carousel).textContent = `${String(active + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    $('.hero-frame-title', carousel).textContent = slide.dataset.caption;
+    const link = $('.hero-frame-link', carousel);
+    link.href = slide.dataset.link;
+    const arrow = document.createElement('span');
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '↗';
+    link.replaceChildren(document.createTextNode(slide.dataset.linkLabel + ' '), arrow);
+    if (manual) $('[data-hero-status]', carousel).textContent = slide.getAttribute('aria-label');
+    schedule();
+  }
+  $('.hero-carousel-controls', carousel).hidden = false;
+  selectors.forEach((button, index) => button.addEventListener('click', () => show(index, true)));
+  $('[data-hero-previous]', carousel).addEventListener('click', () => show(active - 1, true));
+  $('[data-hero-next]', carousel).addEventListener('click', () => show(active + 1, true));
+  pauseButton.addEventListener('click', () => {
+    userPaused = !userPaused;
+    if (!userPaused) focused = false; // Explicit Play can restart after keyboard focus.
+    updatePlayback();
+  });
+  carousel.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    show(active + (event.key === 'ArrowRight' ? 1 : -1), true);
+  });
+  carousel.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') { hovered = true; schedule(); } });
+  carousel.addEventListener('pointerleave', () => { hovered = false; schedule(); });
+  carousel.addEventListener('focusin', () => { focused = true; schedule(); });
+  carousel.addEventListener('focusout', event => {
+    if (!carousel.contains(event.relatedTarget)) { focused = false; schedule(); }
+  });
+  document.addEventListener('visibilitychange', schedule);
+  reducedMotion.addEventListener('change', event => { if (event.matches) { userPaused = true; updatePlayback(); } });
+  window.addEventListener('pagehide', () => { pageActive = false; clearTimeout(timer); });
+  window.addEventListener('pageshow', () => { pageActive = true; schedule(); });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }, { threshold: 0.2 });
+    observer.observe(carousel);
+  }
+  updatePlayback();
+})();

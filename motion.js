@@ -55,14 +55,13 @@
         gsap.timeline({ defaults: { ease: motion.ease } })
           .fromTo('.hero .eyebrow', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.65 }, 0)
           .fromTo('#hero-title .text-line', { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.13, duration: 1.05 }, 0.1)
-          .fromTo('.hero-image-depth img', { scale: 1.075, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.45 }, 0.18)
+          .fromTo('.hero-carousel-stage', { opacity: 0 }, { opacity: 1, duration: 1.1 }, 0.18)
           .fromTo('.hero-description, .hero-content > .button, .hero-origin', { y: 17, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.12, duration: 0.8 }, 0.58)
           .fromTo('.hero-visual figcaption, .hero-bottom', { opacity: 0 }, { opacity: 1, duration: 0.8 }, 0.85);
       }
       const cue = gsap.to('.scroll-cue > span', { y: 5, duration: 0.7, ease: 'sine.inOut', repeat: 5, yoyo: true, paused: true });
       ScrollTrigger.create({ trigger: '.hero', start: 'top bottom', end: 'bottom top', onEnter: () => cue.play(), onLeave: () => cue.pause(), onEnterBack: () => cue.play(), onLeaveBack: () => cue.pause() });
       if (desktop) {
-        gsap.to('.hero-product', { y: -38, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 } });
         gsap.to('.hero-content', { y: -15, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 } });
       }
 

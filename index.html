@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="motion.css">
   <link rel="stylesheet" href="detail-pages.css">
 <link rel="stylesheet" href="site-design.css">
+  <link rel="stylesheet" href="hero-carousel.css">
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="app.js" defer></script>
@@ -34,7 +35,28 @@
         <a class="button button-blue" href="#solutions">Explore our solutions <span aria-hidden="true">↗</span></a>
         <a class="hero-origin" href="#about">From the founders of Teams Equipment LLP <span aria-hidden="true">↗</span></a>
       </div>
-      <figure class="hero-visual"><div class="hero-product"><div class="hero-image-depth"><img src="assets/rollers-hero.webp" alt="Illustrative studio composition of blue rubber printing rollers with machined steel shafts" width="1536" height="1024" fetchpriority="high"></div></div><figcaption><span>01 / THE FOUNDATION OF A BETTER PRINT</span><span>RUBBER. REFINED.</span></figcaption></figure>
+      <figure class="hero-visual hero-carousel" role="region" aria-roledescription="carousel" aria-label="Rollers and printing — campaign visuals">
+        <div class="hero-product hero-carousel-stage" id="hero-carousel-stage">
+          <div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3 — The roller range" data-caption="The foundation of a better print." data-link="rollers-printing.html" data-link-label="Explore printing rollers">
+            <img src="assets/hero/roller-range-1280.webp" srcset="assets/hero/roller-range-640.webp 640w, assets/hero/roller-range-1280.webp 1280w, assets/hero/roller-range-1536.webp 1536w" sizes="(max-width: 760px) calc(100vw - 48px), 48vw" alt="Illustrative blue, brown and charcoal printing rollers on a satin metal worktable in a softly lit studio" width="1536" height="1024" fetchpriority="high">
+          </div>
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 3 — Material and machining" aria-hidden="true" data-caption="Precision, down to the surface." data-link="roller-technology.html#performance" data-link-label="Explore material technology">
+            <img src="assets/hero/roller-detail-1280.webp" srcset="assets/hero/roller-detail-640.webp 640w, assets/hero/roller-detail-1280.webp 1280w, assets/hero/roller-detail-1536.webp 1536w" sizes="(max-width: 760px) calc(100vw - 48px), 48vw" alt="Illustrative close-up of blue rubber, concentric steel end discs and a polished roller shaft" width="1536" height="1024" loading="lazy" decoding="async" fetchpriority="low">
+          </div>
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 3 — The printing process" aria-hidden="true" data-caption="Where material meets the press." data-link="roller-technology.html#printing" data-link-label="Explore printing applications">
+            <img src="assets/hero/offset-press-1280.webp" srcset="assets/hero/offset-press-640.webp 640w, assets/hero/offset-press-1280.webp 1280w, assets/hero/offset-press-1536.webp 1536w" sizes="(max-width: 760px) calc(100vw - 48px), 48vw" alt="Illustrative blue rubber rollers inside an offset press inking unit, with printed sheets on the adjacent feeder surface" width="1536" height="1024" loading="lazy" decoding="async" fetchpriority="low">
+          </div>
+        </div>
+        <figcaption class="hero-carousel-caption">
+          <div><span class="hero-frame-number">01 / 03</span><p class="hero-frame-title">The foundation of a better print.</p><a class="hero-frame-link" href="rollers-printing.html">Explore printing rollers <span aria-hidden="true">↗</span></a></div>
+          <div class="hero-carousel-controls" hidden>
+            <div class="hero-slide-selectors" aria-label="Choose a campaign image"><button type="button" data-hero-slide="0" aria-label="Show the roller range" aria-pressed="true" aria-controls="hero-carousel-stage"><span></span></button><button type="button" data-hero-slide="1" aria-label="Show material and machining" aria-pressed="false" aria-controls="hero-carousel-stage"><span></span></button><button type="button" data-hero-slide="2" aria-label="Show the printing process" aria-pressed="false" aria-controls="hero-carousel-stage"><span></span></button></div>
+            <div class="hero-playback"><button type="button" data-hero-previous aria-label="Previous campaign image" aria-controls="hero-carousel-stage">←</button><button type="button" data-hero-next aria-label="Next campaign image" aria-controls="hero-carousel-stage">→</button><button type="button" data-hero-pause aria-label="Pause slideshow"><span aria-hidden="true">Ⅱ</span></button></div>
+          </div>
+        </figcaption>
+        <p class="hero-visual-note">Illustrative campaign imagery.</p>
+        <span class="sr-only" data-hero-status aria-live="polite" aria-atomic="true"></span>
+      </figure>
       <div class="hero-bottom"><span>Made for the details that matter.</span><a href="#solutions">SCROLL TO DISCOVER <span class="scroll-cue" aria-hidden="true"><span>↓</span></span></a></div>
     </section>
     <div class="focus-strip" aria-label="Our focus"><span>Precision at every point.</span><span>INK TRANSFER</span><span>WATER BALANCE</span><span>SURFACE FINISH</span><span>PRESS PERFORMANCE</span></div>
