@@ -75,6 +75,7 @@ h1,h2 { letter-spacing:-.045em; }
 .home-page .business-principle { font-size:15px; }
 .home-page .company-gallery { grid-template-columns:1fr 1fr; gap:32px; }
 .home-page .company-photo:nth-child(2) { margin-top:0; }
+.home-page .company-photo-title { margin:0 0 16px; font-size:clamp(19px,1.8vw,24px); font-weight:500; line-height:1.3; letter-spacing:-.025em; color:var(--ink); }
 .home-page .company-photo img { aspect-ratio:4/3; object-fit:cover; }
 .home-page .company-gallery-title { font-size:30px; }
 .home-page .company-photo figcaption>p { font-size:12px; }
