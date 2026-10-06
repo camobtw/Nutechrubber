@@ -71,6 +71,7 @@ h1,h2 { letter-spacing:-.045em; }
 .home-page .about-body p:not(.about-lead) { font-size:14px; max-width:520px; line-height:1.85; }
 .home-page .about-lead { font-size:23px; }
 .home-page .business-roots { gap:48px; padding-block:30px; margin-top:40px; }
+.home-page .about-intro[hidden] + .business-roots { margin-top:0; padding-top:0; border-top:0; }
 .home-page .business-principle { font-size:15px; }
 .home-page .company-gallery { grid-template-columns:1fr 1fr; gap:32px; }
 .home-page .company-photo:nth-child(2) { margin-top:0; }

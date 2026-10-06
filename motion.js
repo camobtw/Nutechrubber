@@ -61,8 +61,6 @@
       } else {
         all('.product').forEach(product => enter(product, product, { y: 0 }));
       }
-      enter(one('.about'), '#about-title .text-line', { y: 0, yPercent: 110 }, { duration: 1.05, stagger: 0.17 });
-      enter(one('.about-body > div'), '.about-body > div > *', { y: 18 }, { stagger: 0.1 });
       enter(one('.customer-list'), '.customer-list > li', { y: 12 }, { stagger: 0.08 });
       all('.company-photo').forEach(photo => enter(photo, photo, { y: 18 }, { duration: 0.95 }));
       enter(one('.contact'), '#contact-title .word', { y: 0, yPercent: 110 }, { duration: 0.8, stagger: 0.045 });
