@@ -1,0 +1,162 @@
+/* Shared visual system: NUTECH blue, warm technical paper and editorial rules. */
+:root {
+ --navy:#073b7c;
+ --blue:#087dc4;
+ --ink:#182f40;
+ --muted:#566774;
+ --line:#d6dedf;
+ --paper:#f4f5f1;
+ --dark:#173549;
+ --space:clamp(24px,5.4vw,88px);
+}
+body { font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; }
+p { line-height:1.8; }
+h1,h2 { letter-spacing:-.045em; }
+.site-header { height:90px; gap:28px; }
+.brand { width:164px; }
+.desktop-nav { font-size:12px; gap:28px; }
+.detail-page .desktop-nav { gap:25px; }
+.eyebrow { font-size:10px; font-weight:500; letter-spacing:.1em; }
+.button { min-height:48px; padding:15px 22px; font-size:12px; }
+.header-enquiry { min-height:44px; margin-left:8px; padding:13px 18px; }
+.text-link { font-size:12px; gap:25px; margin-top:16px; }
+.text-link:hover { gap:25px; color:var(--blue); border-color:var(--blue); }
+.footer-navigation { width:100%; display:flex; flex-wrap:wrap; gap:12px 30px; padding:24px 0 0; border-top:1px solid var(--line); font-size:12px; color:var(--navy); }
+.footer-navigation a { display:flex; align-items:center; min-height:44px; padding:6px 0; }
+.footer-navigation a:hover { text-decoration:underline; text-underline-offset:5px; }
+.site-footer { padding-top:36px; gap:25px; }
+.footer-bottom { padding-top:18px; }
+/* Homepage: deliberate scale changes between catalogue, expertise and story. */
+.home-page .hero { min-height:625px; grid-template-columns:47% 53%; padding-bottom:60px; }
+.home-page .hero-content { padding-top:62px; padding-bottom:54px; }
+.home-page .hero h1 { font-size:clamp(58px,6.1vw,94px); letter-spacing:-.05em; margin-top:26px; }
+.home-page .hero-description { font-size:15px; line-height:1.8; }
+.home-page .hero-visual { margin:30px var(--space) 34px 0; align-items:center; }
+.home-page .hero-product { width:112%; margin-left:-8%; }
+.home-page .hero-visual figcaption { bottom:0; left:0; right:0; }
+.home-page .hero-bottom { height:60px; }
+.home-page .focus-strip { padding-block:22px; }
+.home-page .section-pad { padding-block:76px; }
+.home-page .section-heading { grid-template-columns:1fr 3fr; gap:24px; margin-bottom:38px; }
+.home-page .section-heading>div { display:block; }
+.home-page .section-heading h2 { font-size:clamp(32px,3.3vw,48px); line-height:1.12; }
+.home-page .section-heading>div>p { max-width:560px; font-size:14px; margin-top:18px; padding:0; }
+.home-page .section-heading>div>p br { display:none; }
+.home-page .product { padding:22px 26px 26px; background:#fff; }
+.home-page .roller-art { margin:20px 0; background:var(--paper); }
+.home-page .product h3 { font-size:24px; min-height:0; margin-bottom:14px; }
+.home-page .product>p { font-size:14px; line-height:1.8; min-height:100px; margin-bottom:17px; }
+.home-page .product .text-link { margin-top:auto; }
+.home-page .section-note { text-align:left; font-size:12px; line-height:1.8; }
+.home-page .section-note .inline-link { display:inline-block; margin:9px 12px 0 0; }
+.home-page .customers { background:var(--paper); padding-block:52px; }
+.home-page .customer-list { column-gap:36px; }
+.home-page .customer-list li { font-size:clamp(18px,1.8vw,26px); min-height:80px; padding-block:20px; }
+.home-page .expertise { padding-block:64px; }
+.home-page .expertise h2 { font-size:clamp(34px,3.6vw,50px); }
+.home-page .expertise-copy>p:not(.eyebrow) { font-size:14px; line-height:1.85; }
+.home-page .approach-row h3 { font-size:16px; }
+.home-page .approach-row p { font-size:13px; line-height:1.8; }
+.home-page .application-tabs { padding:25px 45px 25px 0; }
+.home-page .application-panel { padding:34px 38px; }
+.home-page .application-copy>p:not(.eyebrow) { font-size:14px; max-width:440px; line-height:1.8; }
+.home-page .application-copy>.eyebrow { font-size:9px; }
+.home-page .application-copy { min-height:265px; }
+.home-page .application-index { right:38px; top:36px; }
+.home-page .about::before { display:none; }
+.home-page .about { background:var(--paper); }
+.home-page .about-body { grid-template-columns:1fr 1fr; gap:56px; }
+.home-page .about-body h2 { font-size:clamp(38px,4.4vw,64px); }
+.home-page .about-body>div { padding:0; }
+.home-page .about-body p:not(.about-lead) { font-size:14px; max-width:520px; line-height:1.85; }
+.home-page .about-lead { font-size:23px; }
+.home-page .business-roots { gap:48px; padding-block:30px; margin-top:40px; }
+.home-page .business-principle { font-size:15px; }
+.home-page .company-gallery { grid-template-columns:1fr 1fr; gap:32px; }
+.home-page .company-photo:nth-child(2) { margin-top:0; }
+.home-page .company-photo img { aspect-ratio:4/3; object-fit:cover; }
+.home-page .company-gallery-title { font-size:30px; }
+.home-page .company-photo figcaption>p { font-size:12px; }
+.home-page .visit-note { padding-block:30px; background:#edf2f3; }
+.home-page .visit-copy p { font-size:13px; line-height:1.8; }
+.home-page .faq { grid-template-columns:1fr 1.5fr; gap:48px; }
+.home-page .faq-items { padding-left:0; }
+.home-page .faq summary { font-size:15px; padding:23px 0; }
+.home-page .faq details p { font-size:14px; line-height:1.85; }
+.home-page .contact { background:var(--dark); padding-block:64px; }
+.home-page .contact h2 { font-size:clamp(36px,4.2vw,62px); }
+.home-page .contact-ring { display:none; }
+.home-page .contact-details { gap:36px; }
+@media (max-width:1050px) {
+ .desktop-nav,.detail-page .desktop-nav { gap:17px; font-size:11px; }
+ .site-header,.detail-page .site-header { gap:20px; }
+ .brand { width:152px; }
+ .header-enquiry { margin-left:0; gap:20px; }
+ .home-page .hero { min-height:590px; }
+ .home-page .hero-content { padding-top:48px; }
+ .home-page .hero h1 { font-size:clamp(53px,6.1vw,68px); }
+ .home-page .hero-description { font-size:14px; }
+ .home-page .product { padding:20px; }
+ .home-page .product>p { min-height:105px; }
+ .home-page .section-heading { grid-template-columns:1fr 2.5fr; }
+ .home-page .about-body { gap:32px; }
+ .home-page .contact-details { gap:24px; }
+}
+@media (max-width:840px) and (min-width:761px) {
+ .site-header,.detail-page .site-header { gap:16px; }
+ .brand { width:135px; }
+ .desktop-nav,.detail-page .desktop-nav { gap:14px; font-size:10px; }
+ .header-enquiry { padding:12px; gap:12px; }
+ .home-page .hero .eyebrow { font-size:8px; }
+ .home-page .hero-content { padding-right:15px; }
+}
+@media (max-width:760px) {
+ .site-header { height:78px; }
+ .brand { width:145px; }
+ .desktop-nav,.header-enquiry { display:none; }
+ .footer-navigation { gap:14px 24px; font-size:12px; }
+ .site-footer { gap:22px; padding-block:30px 20px; }
+ .home-page .hero { display:flex; flex-direction:column; min-height:0; padding-bottom:60px; }
+ .home-page .hero-content { padding:38px var(--space) 20px; }
+ .home-page .hero h1 { font-size:clamp(53px,13vw,78px); max-width:500px; margin-top:22px; }
+ .home-page .hero .eyebrow { font-size:9px; }
+ .home-page .hero-description { font-size:14px; }
+ .home-page .hero-visual { margin:0 var(--space) 26px; min-height:0; }
+ .home-page .hero-product { width:100%; margin:0; }
+ .home-page .hero-image-depth img { height:auto; }
+ .home-page .hero-visual figcaption { bottom:-12px; font-size:7px; }
+ .home-page .hero-bottom { font-size:10px; }
+ .home-page .section-pad { padding-block:48px; }
+ .home-page .section-heading { grid-template-columns:1fr; gap:17px; margin-bottom:28px; }
+ .home-page .section-heading>.eyebrow { margin:0; }
+ .home-page .section-heading h2 { font-size:34px; }
+ .home-page .section-heading>div>p { font-size:14px; margin-top:16px; }
+ .home-page .product { padding:22px 0; }
+ .home-page .product>p { min-height:0; max-width:none; }
+ .home-page .product h3 { font-size:26px; }
+ .home-page .roller-art { max-height:none; margin-block:16px; }
+ .home-page .product .text-link { margin-top:5px; }
+ .home-page .customers { padding-block:38px; }
+ .home-page .customer-list { column-gap:24px; }
+ .home-page .customer-list li { font-size:18px; min-height:82px; }
+ .home-page .expertise-copy { padding-left:0; }
+ .home-page .expertise h2 { font-size:35px; }
+ .home-page .expertise-copy>p:not(.eyebrow) { font-size:14px; }
+ .home-page .application-tabs { padding:10px 0; }
+ .home-page .application-tabs button { font-size:19px; padding:19px 0; }
+ .home-page .application-panel { padding:27px 24px; }
+ .home-page .application-copy { min-height:0; }
+ .home-page .application-copy h3 { font-size:32px; min-height:0; }
+ .home-page .application-copy>p:not(.eyebrow) { font-size:14px; min-height:0; }
+ .home-page .application-index { right:24px; top:28px; }
+ .home-page .about-body { grid-template-columns:1fr; gap:28px; }
+ .home-page .about-body h2 { font-size:43px; }
+ .home-page .about-lead { font-size:22px; }
+ .home-page .business-roots { gap:24px; }
+ .home-page .company-gallery { grid-template-columns:1fr; gap:24px; }
+ .home-page .company-gallery-title { font-size:28px; }
+ .home-page .faq { grid-template-columns:1fr; gap:25px; }
+ .home-page .contact h2 { font-size:38px; }
+ .home-page .contact-details { gap:28px; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }

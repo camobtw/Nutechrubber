@@ -2,6 +2,12 @@
 
 A custom responsive website concept for Nutechrubber, focused on rubber solutions for offset printing. Built with semantic HTML, CSS, and JavaScript. GSAP 3.15.0 and ScrollTrigger provide the motion layer. Their distribution files are self-hosted in `assets/vendor/`, so the committed site runs without a build step or an external CDN.
 
+## Current design
+
+The October 2026 editorial redesign covers all ten pages: the homepage, Meiwa profile, technology overview, India opportunity and six individual roller categories. [DESIGN-REVIEW.md](DESIGN-REVIEW.md) records the audit and implemented changes for each page. `site-design.css` owns shared visual tokens and homepage refinements; `detail-pages.css` owns the supporting-page layouts. Product pages use the original roller imagery, labeled range tables and application-specific enquiry guides. The India equipment image is removed, and About NUTECH links directly to the India page. Product tilt is removed; the applications tabs remain static and manual.
+
+Use `npm run build` for production output: all ten HTML pages, their CSS/JavaScript and `assets/` are validated and copied to `dist/`. Vercel serves that directory. Original source attachments and local screenshots remain outside the published output.
+
 ## Preview
 
 Requires Node.js 20.11 or newer.

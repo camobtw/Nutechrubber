@@ -17,10 +17,9 @@
     media.add({
       motion: '(prefers-reduced-motion: no-preference)',
       desktop: '(min-width: 1000px) and (min-height: 700px)',
-      fine: '(hover: hover) and (pointer: fine)',
     }, context => {
       if (!context.conditions.motion) return;
-      const { desktop, fine } = context.conditions;
+      const { desktop } = context.conditions;
       const listeners = new AbortController();
       const cleanups = [];
       const entrances = [];
@@ -30,7 +29,7 @@
       // Create paused animations while leaving the initial HTML visible. Animate only
       // when it enters view; keyboard focus always completes the relevant entrance.
       function enter(trigger, targets, from = {}, options = {}) {
-        if (revealed.has(trigger)) return;
+        if (!trigger || revealed.has(trigger)) return;
         const tween = gsap.fromTo(targets, { y: 24, opacity: 0, ...from }, {
           y: 0, yPercent: 0, opacity: 1, duration: motion.duration,
           ease: motion.ease, stagger: motion.stagger,
@@ -50,8 +49,7 @@
         });
       });
 
-      // Hero: separate wrappers give entrance, scroll depth, and pointer motion
-      // independent transforms. The photograph remains a photograph.
+      // The hero uses a short entrance and restrained scroll depth.
       if (!heroPlayed && window.scrollY < one('.hero').offsetHeight) {
         heroPlayed = true;
         gsap.timeline({ defaults: { ease: motion.ease } })
@@ -80,8 +78,6 @@
       enter(one('.about-body > div'), '.about-body > div > *', { y: 18 }, { stagger: 0.1 });
       enter(one('.customer-list'), '.customer-list > li', { y: 12 }, { stagger: 0.08 });
       all('.company-photo').forEach(photo => enter(photo, photo, { y: 18 }, { duration: 0.95 }));
-      enter(one('.manufacturing-copy'), '.manufacturing-copy > *', { y: 16 }, { stagger: 0.08 });
-      enter(one('.equipment-figure'), '.equipment-figure', { y: 16 }, { duration: 0.95 });
       enter(one('.contact'), '#contact-title .word', { y: 0, yPercent: 110 }, { duration: 0.8, stagger: 0.045 });
       enter(one('.contact-content'), '.contact .eyebrow, .contact .button', { y: 16 }, { delay: 0.15 });
       enter(one('.contact-ring'), '.contact-ring', { y: 0, scale: 0.92 }, { scale: 1, duration: 1.2 });
@@ -92,7 +88,7 @@
 
       engineeringTimeline();
       setupAccordions(listen, cleanups);
-      if (fine) setupPointerDepth(listen, cleanups);
+
 
       const refresh = () => ScrollTrigger.refresh();
       if (document.readyState !== 'complete') listen(window, 'load', refresh);
@@ -173,39 +169,6 @@
       });
       cleanups.push(() => { animation?.cancel(); settle(); });
     });
-  }
-
-  function setupPointerDepth(listen, cleanups) {
-    function track(element, target, limits, activeClass) {
-      const setters = Object.fromEntries(Object.keys(limits).map(property => [property, gsap.quickTo(target, property, { duration: 0.5, ease: motion.ease })]));
-      let rect;
-      const reset = () => {
-        Object.entries(setters).forEach(([property, set]) => set(property.startsWith('scale') ? 1 : 0));
-        element.classList.remove(activeClass);
-        rect = null;
-      };
-      listen(element, 'pointerenter', event => {
-        if (event.pointerType === 'touch') return;
-        rect = element.getBoundingClientRect();
-        element.classList.add(activeClass);
-      });
-      listen(element, 'pointermove', event => {
-        if (!rect || event.pointerType === 'touch' || element.matches(':focus-visible')) return;
-        const x = gsap.utils.clamp(-1, 1, (event.clientX - rect.left) / rect.width * 2 - 1);
-        const y = gsap.utils.clamp(-1, 1, (event.clientY - rect.top) / rect.height * 2 - 1);
-        Object.entries(limits).forEach(([property, [axis, amount]]) => setters[property](axis === 'fixed' ? amount : (axis === 'x' ? x : y) * amount));
-      });
-      listen(element, 'pointerleave', reset);
-      listen(element, 'pointercancel', reset);
-      listen(element, 'focusin', reset);
-      cleanups.push(() => { Object.values(setters).forEach(set => set.tween.kill()); element.classList.remove(activeClass); });
-    }
-    all('.hero-content > .button, .contact .button').forEach(button => track(button, button, { x: ['x', 4], y: ['y', 3] }, 'is-magnetic'));
-    all('.product').forEach(product => {
-      track(product, product, { rotationX: ['y', -1.5], rotationY: ['x', 1.8] }, 'is-tilting');
-      track(product, one('.roller-art img', product), { x: ['x', 2], y: ['y', -2], scaleX: ['fixed', 1.012], scaleY: ['fixed', 1.012] }, 'is-tilting');
-    });
-    track(one('.hero-visual'), one('.hero-image-depth'), { x: ['x', 5], y: ['y', 4], rotationY: ['x', 0.5] }, 'is-tilting');
   }
 
   function unmount() { media?.revert(); media = null; }
