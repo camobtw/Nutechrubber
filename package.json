@@ -1,0 +1,17 @@
+{
+  "name": "nutech-rubber-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check app.js && node --check motion.js && node --check detail-pages.js && node --check server.mjs && node --check scripts/vendor.mjs && node --check scripts/build.mjs && node --check scripts/publish.mjs",
+    "build": "npm run check && node scripts/build.mjs",
+    "publish": "node scripts/publish.mjs",
+    "vendor": "node scripts/vendor.mjs"
+  },
+  "dependencies": {
+    "gsap": "3.15.0"
+  }
+}

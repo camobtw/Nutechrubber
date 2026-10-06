@@ -1,0 +1,149 @@
+/* Motion is an enhancement. Every existing section is visible without JavaScript. */
+:root {
+  --motion-ease: cubic-bezier(.22, .72, .18, 1);
+  --motion-fast: 240ms;
+  --motion-standard: 600ms;
+}
+
+.text-mask {
+  display: block;
+  overflow: clip;
+  padding-bottom: .14em;
+  margin-bottom: -.14em;
+}
+.text-line { display: block; transform-origin: 0 100%; }
+.word-mask { display: inline-block; overflow: clip; vertical-align: top; margin-bottom: -.15em; padding-bottom: .15em; }
+.word { display: inline-block; }
+.hero-product { flex: none; }
+.hero-image-depth { width: 100%; }
+.hero-image-depth img { width: 100%; height: auto; mix-blend-mode: multiply; }
+.hero-visual { perspective: 1200px; }
+.scroll-cue { display: inline-flex; height: 27px; overflow: hidden; align-items: center; }
+.scroll-cue > span { display: inline-block; }
+
+/* Keep the interaction target stable while its arrow and surface respond. */
+.button { transition: background var(--motion-fast), border-color var(--motion-fast); }
+.button > span, .text-link > span {
+  display: inline-block;
+  transition: transform 350ms var(--motion-ease);
+}
+.button:hover > span, .button:focus-visible > span,
+.text-link:hover > span, .text-link:focus-visible > span {
+  transform: translate(3px, -3px);
+}
+.text-link { transition: color var(--motion-fast), border-color var(--motion-fast); }
+.text-link:hover { gap: 35px; }
+.desktop-nav a::after { width: 100%; transform: scaleX(0); transform-origin: left; transition: transform 350ms var(--motion-ease); }
+.desktop-nav a:hover::after, .desktop-nav a:focus-visible::after { transform: scaleX(1); }
+
+.product-grid { perspective: 1400px; }
+.product { position: relative; transform-origin: 50% 60%; }
+.product.is-tilting, .button.is-magnetic { will-change: transform; }
+.product::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms var(--motion-ease);
+}
+.product:hover::before, .product:focus-within::before { transform: scaleX(1); }
+.roller-art { position: relative; }
+.roller-art::after {
+  content: "";
+  position: absolute;
+  inset: 14% -15%;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / .3) 50%, transparent 65%);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 1000ms var(--motion-ease), opacity 300ms;
+}
+.product:hover .roller-art::after { transform: translateX(100%); opacity: 1; }
+.roller-art svg, .roller-art img { transition: none; }
+.product:hover .roller-art svg { transform: none; }
+.product:hover .text-link > span, .product:focus-within .text-link > span { transform: translate(3px, -3px); }
+
+/* Geometry stays in SVG coordinates. Only the indexing ring rotates. */
+.engineering-svg { overflow: visible; }
+.layer-label { font-size: 9px; }
+.layer-notes { position: relative; min-height: 80px; margin-top: -8px; }
+.layer-note { position: absolute; inset: 0; opacity: 0; line-height: 1.5; }
+.layer-note.complete { opacity: 1; }
+.layer-note strong { display: block; font-size: 11px; font-weight: 500; color: #d4e8f5; margin-bottom: 7px; }
+.layer-note > span { display: block; max-width: 330px; font-size: 10px; color: #aec0ce; }
+
+/* Application selection is manual and immediate; this section has no motion. */
+.applications *, .applications *::before, .applications *::after { animation: none !important; transition: none !important; }
+.application-layout { position: relative; }
+.application-tabs button { position: relative; }
+.application-tabs button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.application-tabs button[aria-selected="true"]::after { transform: scaleX(1); }
+.application-copy { position: relative; min-height: 279px; }
+.application-copy h3 { min-height: 2.2em; }
+.application-copy > p:not(.eyebrow) { min-height: 4.95em; }
+.application-index { position: absolute; right: 50px; top: 48px; font-size: 9px; letter-spacing: .1em; color: #536877; font-variant-numeric: tabular-nums; }
+.application-progress { position: absolute; height: 2px; bottom: 0; left: 0; right: 0; background: var(--blue); transform: scaleX(.333333); transform-origin: left; }
+.application-panel[data-application-step="1"] .application-progress { transform: scaleX(.666667); }
+.application-panel[data-application-step="2"] .application-progress { transform: scaleX(1); }
+
+.about { position: relative; overflow: hidden; isolation: isolate; }
+.about::before { content: ""; position: absolute; z-index: -1; inset: 60% 0 -30%; background: #eef1f0; opacity: .45; transform: translateY(var(--about-shift, 0px)); }
+.contact-ring::before { content: ""; position: absolute; inset: -35px; border: 1px dashed #396493; border-radius: 50%; }
+.contact-ring::after { content: ""; position: absolute; width: 1px; height: 29px; top: -49px; left: 50%; background: #87b7d5; opacity: .6; }
+.contact .button:hover { background: #e3f1f9; border-color: #a3cce6; }
+
+/* Native details remains the fallback; only the short expansion animates layout. */
+.faq details { position: relative; }
+.faq details::after { content: ""; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 400ms var(--motion-ease); }
+.faq details:hover::after, .faq details[open]::after { transform: scaleX(1); }
+.faq summary { transition: color var(--motion-fast); }
+.faq summary:hover { color: var(--blue); }
+.faq summary > span { position: relative; flex: none; width: 16px; height: 16px; font-size: 0; }
+.faq summary > span::before, .faq summary > span::after { content: ""; position: absolute; background: var(--blue); left: 1px; right: 1px; height: 1px; top: 7px; transition: transform 280ms var(--motion-ease); }
+.faq summary > span::after { transform: rotate(90deg); }
+.faq details[open] summary > span { transform: none; }
+.faq details[open]:not(.is-closing) summary > span::after { transform: rotate(90deg) scaleX(0); }
+
+@media (max-width: 1100px) {
+  .application-index { right: 32px; top: 35px; }
+}
+@media (max-width: 760px) {
+  .hero-image-depth, .hero-image-depth img { height: 100%; }
+  .hero-image-depth img { object-fit: contain; }
+  .application-index { right: 26px; top: 35px; }
+  .application-copy { min-height: 300px; }
+  .layer-notes { min-height: 84px; margin-top: 0; }
+  .layer-note > span { max-width: 285px; }
+  .about::before { transform: none; }
+}
+@media (max-width: 400px) {
+  .application-copy h3 { min-height: 3.3em; }
+  .application-copy > p:not(.eyebrow) { min-height: 6.6em; }
+}
+@media (max-width: 360px) {
+  .application-copy h3 { font-size: 28px; min-height: 2.2em; }
+  .application-copy > p:not(.eyebrow) { min-height: 9.9em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .roller-art::after { display: none; }
+  .button:hover > span, .text-link:hover > span,
+  .product:hover .text-link > span { transform: none; }
+}
+@media (hover: none) {
+  .roller-art::after { display: none; }
+}

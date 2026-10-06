@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+output/
+dist/
+.vercel/
+.env
+.env.*
+!.env.example
+# Original attachments (loose files not part of website)
+/60d6b7a3-e336-4301-9180-440a7ffb55aa.png
