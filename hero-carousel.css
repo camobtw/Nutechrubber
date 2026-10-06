@@ -1,10 +1,11 @@
-/* Campaign photographs sit in one measured frame; the headline stays still. */
+/* A large campaign image leads; the headline and enquiry copy sit beneath it. */
+.home-page .hero.hero-campaign { display:flex; flex-direction:column; min-height:0; padding:0; }
 .home-page .hero-visual.hero-carousel {
  display:flex; flex-direction:column; justify-content:center; align-items:stretch;
- height:auto; min-width:0; margin:40px var(--space) 32px 28px; perspective:none; overflow:visible;
+ height:auto; min-width:0; margin:0; perspective:none; overflow:visible;
 }
 .home-page .hero-carousel-stage {
- position:relative; width:100%; margin:0; aspect-ratio:3/2; isolation:isolate;
+ position:relative; width:100%; margin:0; aspect-ratio:2.1/1; isolation:isolate;
  overflow:hidden; background:#e5e7e5; mix-blend-mode:normal;
 }
 .hero-slide { position:absolute; inset:0; opacity:0; visibility:hidden; transition:opacity .8s ease, visibility .8s; }
@@ -12,13 +13,14 @@
 .hero-slide img { display:block; width:100%; height:100%; object-fit:cover; }
 .home-page .hero-visual .hero-carousel-caption {
  position:static; display:flex; justify-content:space-between; align-items:flex-start; gap:18px;
- padding-top:23px; letter-spacing:0; color:var(--ink);
+ padding:21px var(--space) 18px; letter-spacing:0; color:var(--ink); border-bottom:1px solid var(--line);
 }
 .hero-frame-number { font-size:10px; letter-spacing:.12em; color:var(--muted); }
-.hero-frame-title { margin:8px 0; max-width:280px; font-size:clamp(16px,1.45vw,22px); line-height:1.35; letter-spacing:-.025em; }
+.home-page .hero-carousel figcaption span { display:inline-block; }
+.hero-frame-title { margin:7px 0 4px; font-size:clamp(18px,1.65vw,24px); line-height:1.35; letter-spacing:-.025em; }
 .hero-frame-link { display:inline-flex; align-items:center; gap:14px; min-height:32px; font-size:11px; color:var(--navy); }
 .hero-frame-link:hover { text-decoration:underline; text-underline-offset:4px; }
-.hero-carousel-controls { flex:none; display:flex; flex-direction:column; align-items:flex-end; margin-top:-12px; }
+.hero-carousel-controls { flex:none; display:flex; align-items:center; gap:25px; margin-top:6px; }
 .hero-carousel-controls[hidden] { display:none; }
 .hero-carousel-controls button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; background:transparent; color:var(--navy); transition:color .2s, background .2s; }
 .hero-carousel-controls button:hover { color:var(--blue); background:#e6eae8; }
@@ -27,25 +29,35 @@
 .hero-slide-selectors button[aria-pressed="true"] span { background:var(--navy); height:3px; }
 .hero-playback button { font-size:19px; }
 .hero-playback [data-hero-pause] { font-size:14px; border-left:1px solid var(--line); margin-left:5px; }
-.hero-visual-note { margin:14px 0 0; font-size:9px; line-height:1.5; color:var(--muted); }
+.hero-visual-note { position:absolute; top:16px; left:var(--space); z-index:2; margin:0; padding:6px 10px; background:var(--paper); font-size:9px; line-height:1.5; color:var(--muted); }
 .hero-carousel [data-hero-status] { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.home-page .hero-campaign .hero-content { display:grid; grid-template-columns:1.35fr 1fr; gap:6vw; padding:46px var(--space) 44px; }
+.home-page .hero-campaign h1 { margin:22px 0 0; font-size:clamp(48px,5.6vw,88px); }
+.hero-title-accent { color:var(--blue); }
+.hero-details { align-self:center; padding-top:15px; }
+.home-page .hero-campaign .hero-description { margin-bottom:22px; font-size:16px; }
+.home-page .hero-campaign .hero-bottom { position:static; margin:0 var(--space); height:60px; }
 @media (max-width:1000px) and (min-width:761px) {
- .home-page .hero-visual.hero-carousel { margin-left:12px; margin-top:26px; }
- .home-page .hero-visual .hero-carousel-caption { flex-direction:column; gap:10px; }
- .hero-carousel-controls { flex-direction:row; align-items:center; width:100%; justify-content:space-between; margin:0; }
+ .hero-carousel-controls { gap:15px; }
  .hero-frame-title { font-size:18px; }
+ .home-page .hero-campaign .hero-content { gap:35px; }
+ .home-page .hero-campaign h1 { font-size:clamp(44px,5.6vw,56px); }
+ .home-page .hero-campaign .hero-description { font-size:14px; }
 }
 @media (max-width:760px) {
- .home-page .hero-visual.hero-carousel { margin:12px var(--space) 24px; }
- .home-page .hero-visual .hero-carousel-caption { gap:16px; padding-top:18px; }
+ .home-page .hero-carousel-stage { aspect-ratio:3/2; }
+ .home-page .hero-visual .hero-carousel-caption { flex-direction:column; gap:8px; padding:17px var(--space) 13px; }
  .hero-frame-title { font-size:18px; }
  .hero-frame-number { font-size:9px; }
  .hero-frame-link { font-size:11px; }
  .hero-slide-selectors button span { width:22px; }
-}
-@media (max-width:380px) {
- .home-page .hero-visual .hero-carousel-caption { flex-direction:column; gap:8px; }
  .hero-carousel-controls { flex-direction:row; align-items:center; justify-content:space-between; width:100%; margin:0; }
+ .home-page .hero-campaign .hero-content { grid-template-columns:1fr; gap:22px; padding:30px var(--space); }
+ .home-page .hero-campaign h1 { font-size:clamp(48px,13vw,78px); margin-top:20px; }
+ .home-page .hero-campaign .hero-title-accent { display:block; }
+ .hero-details { padding:0; }
+ .home-page .hero-campaign .hero-description { font-size:14px; }
+ .hero-visual-note { top:12px; font-size:8px; padding:4px 7px; }
 }
 @media (prefers-reduced-motion:reduce) {
  .hero-slide,.hero-carousel-controls button { transition:none; }

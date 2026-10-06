@@ -4,7 +4,7 @@ Created with the built-in image generation tool on 6 October 2026. These are ill
 
 Final website assets: `assets/hero/roller-range-{640,1280,1536}.webp`, `assets/hero/roller-detail-{640,1280,1536}.webp`, and `assets/hero/offset-press-{640,1280,1536}.webp`. Original generated PNGs are retained under ignored `output/imagegen/hero/`.
 
-The carousel crossfades every six seconds, with previous/next, direct selectors and pause/play controls. It pauses on hover, focus, background tabs and leaving the viewport. Reduced-motion visitors start in manual mode. Without JavaScript the first image and its link remain available.
+The large full-width carousel sits above the headline and supporting text. It crossfades every six seconds, with previous/next, direct selectors and pause/play controls. It pauses on hover, focus, background tabs and leaving the viewport. Reduced-motion visitors start in manual mode. Without JavaScript the first image and its link remain available.
 
 ## range
 
@@ -27,4 +27,3 @@ Final prompt:
 Final prompt:
 
 > Use case: ads-marketing. Asset: third frame in premium NUTECH Rubber Solutions homepage campaign. Landscape 3:2. Create an illustrative, physically believable editorial industrial photograph of a single offset printing press inking unit, close-up of smooth dark-blue rubber rollers mounted horizontally inside precision machined steel side frames with bearing blocks and subtle hexagonal bolts. A neat stack of ivory printed sheets with restrained cyan, magenta and yellow registration swatches sits on the adjacent aluminium feeder surface in lower foreground, not magically emerging between inking rollers. Focus on one blue rubber barrel and accurate metal hardware, background press mechanics naturally soft with narrow depth of field, cropped into unit but no confusing giant factory. Warm ivory ambient daylight mixed with a broad studio softbox, polished steel detail with controlled highlights, deep navy rubber, calm neutral greys. Premium commercial engineering campaign, tactile believable photo, elegant editorial framing, no neon, no smoke, no futuristic machinery, no multiple differently coloured ink rollers combined into one unit, no people, no brand identifiers, no text, no labels, no watermark. Must read as a concept scene rather than document a particular company facility. High resolution.
-

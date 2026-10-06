@@ -9,7 +9,6 @@
   const motion = { ease: 'power3.out', duration: 0.85, stagger: 0.11 };
   const revealed = new WeakSet();
   let media;
-  let heroPlayed = false;
 
   function mount() {
     if (media) return;
@@ -49,21 +48,10 @@
         });
       });
 
-      // The hero uses a short entrance and restrained scroll depth.
-      if (!heroPlayed && window.scrollY < one('.hero').offsetHeight) {
-        heroPlayed = true;
-        gsap.timeline({ defaults: { ease: motion.ease } })
-          .fromTo('.hero .eyebrow', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.65 }, 0)
-          .fromTo('#hero-title .text-line', { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.13, duration: 1.05 }, 0.1)
-          .fromTo('.hero-carousel-stage', { opacity: 0 }, { opacity: 1, duration: 1.1 }, 0.18)
-          .fromTo('.hero-description, .hero-content > .button, .hero-origin', { y: 17, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.12, duration: 0.8 }, 0.58)
-          .fromTo('.hero-visual figcaption, .hero-bottom', { opacity: 0 }, { opacity: 1, duration: 0.8 }, 0.85);
-      }
+      // The campaign images and text are visible immediately. The carousel
+      // owns its crossfade; no competing hero entrance or scroll transform.
       const cue = gsap.to('.scroll-cue > span', { y: 5, duration: 0.7, ease: 'sine.inOut', repeat: 5, yoyo: true, paused: true });
       ScrollTrigger.create({ trigger: '.hero', start: 'top bottom', end: 'bottom top', onEnter: () => cue.play(), onLeave: () => cue.pause(), onEnterBack: () => cue.play(), onLeaveBack: () => cue.pause() });
-      if (desktop) {
-        gsap.to('.hero-content', { y: -15, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 } });
-      }
 
       all('.section-heading, .expertise-copy, .faq > div:first-child').filter(element => !element.closest('.applications')).forEach(element => {
         enter(element, [...element.children], { y: 22 }, { stagger: 0.1 });
